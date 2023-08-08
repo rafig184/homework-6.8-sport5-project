@@ -8,9 +8,9 @@ export default function GamesTable(props: { games: Array<IGames> }) {
     if (!props.games || props.games.length === 0) return null;
     return <div>
         <div>
-            <DataTable style={{ backgroundColor: "gray", color: "black" }} value={props.games} tableStyle={{ minWidth: '50rem' }}>
+            <DataTable value={props.games} tableStyle={{ minWidth: '50rem' }}>
                 {Object.keys(props.games[0]).map(key => {
-                    return <Column key={Math.random() * 999} style={{ border: "1px solid black" }} field={key} header={key}></Column>
+                    return <Column key={Math.random() * 999} field={key} header={key}></Column>
                 })
                 }
             </DataTable>

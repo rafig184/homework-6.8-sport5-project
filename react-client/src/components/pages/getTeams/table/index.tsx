@@ -21,7 +21,7 @@ export default function TeamsTable(props: { teams: Array<ITeam> }) {
         <div>
             <DataTable style={{ marginTop: "2%" }} value={props.teams} tableStyle={{ minWidth: '50rem' }}>
                 {Object.keys(props.teams[0]).map(key => {
-                    return <Column field={key} header={key} body={key === "semel" ? imageSemel : undefined}></Column>
+                    return <Column key={Math.random() * 999} field={key} header={key} body={key === "semel" ? imageSemel : undefined}></Column>
                 })
                 }
             </DataTable>
