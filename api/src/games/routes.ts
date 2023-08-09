@@ -3,8 +3,8 @@ import express, { NextFunction, Request, Response } from "express"
 import { getAllGames } from "./handlers/getGames"
 import zod from "zod"
 import { AddGame } from "./handlers/addNewGame"
-import { zonedTimeToUtc } from 'date-fns-tz'
-import { getTime } from "date-fns"
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
+import { format, getTime } from "date-fns"
 
 
 const gamesRouter = express.Router()
@@ -31,7 +31,8 @@ function middlewareNewGame(req: Request, res: Response, next: NextFunction) {
 gamesRouter.post("/new-game", middlewareNewGame, async function (req, res, next) {
     try {
         const { teamAName, teamBName, teamAScore, teamBScore, gameTime } = req.body
-        const gameDate = new Date(gameTime)
+        // const utcDate = utcToZonedTime(new Date(gameTime), 'UTC');
+        const gameDate = format(new Date(gameTime), 'yyyy-MM-dd HH:mm')
         const result = await AddGame(teamAName, teamBName, teamAScore, teamBScore, gameDate)
         console.log(result)
         return res.json({ message: "Game successfully added!" })
@@ -50,13 +51,9 @@ gamesRouter.get("/", async function (req, res, next) {
         return res.json(result)
     } catch (error) {
         console.log(error);
-
         return next(error)
     }
 })
-
-
-
 
 
 export { gamesRouter }

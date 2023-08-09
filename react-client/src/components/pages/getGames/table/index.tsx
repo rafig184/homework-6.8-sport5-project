@@ -10,7 +10,7 @@ export default function GamesTable(props: { games: Array<IGames> }) {
         <div>
             <DataTable value={props.games} tableStyle={{ minWidth: '50rem' }}>
                 {Object.keys(props.games[0]).map(key => {
-                    return <Column key={Math.random() * 999} field={key} header={key}></Column>
+                    return <Column style={{ textAlign: "center" }} key={Math.random() * 999} field={key} header={key}></Column>
                 })
                 }
             </DataTable>

@@ -7,7 +7,6 @@ import GamesTable from "./table"
 export default function GamesPage() {
     const [games, setGames] = useState<Array<IGames>>([])
 
-
     async function getTeamAction() {
         try {
             const result = await getGamesService()

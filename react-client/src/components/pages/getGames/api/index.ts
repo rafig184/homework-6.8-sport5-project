@@ -8,7 +8,7 @@ export interface IGames {
     teamBColor: string,
     TeamAScore: number,
     teamBScore: number,
-    gameTime: Date
+    gameTime: string
 }
 
 

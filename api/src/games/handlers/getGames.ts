@@ -15,7 +15,8 @@ FROM
 JOIN
     teams teamA ON games.teamAId = teamA.teamId
 JOIN
-    teams teamB ON games.teamBid = teamB.teamId;`
+    teams teamB ON games.teamBid = teamB.teamId
+ORDER BY games.id ASC`
     const results = await pool.execute(query);
     const [data] = results;
     return data;

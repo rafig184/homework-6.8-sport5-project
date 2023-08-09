@@ -136,7 +136,7 @@ const AddGamePage = () => {
                 <div>
                     <label htmlFor="text">Date: </label>
                 </div>
-                <Calendar id="gameTime" value={gameTime} onChange={handlerDateCallback} required />
+                <Calendar id="gameTime" value={gameTime} onChange={handlerDateCallback} showTime hourFormat="24" required />
             </div>
             <button style={{ marginTop: "5%", backgroundColor: "yellow" }} type="button" onClick={addGameService}>Add Game</button>
         </form>
